@@ -40,17 +40,10 @@ controllers.registerPost = async (req, res, nex) => {
     if (username) {
       res.send("Username already exists. If it you plese go to the login session.");
     } else {
-<<<<<<< HEAD
       User.create({ username, password });
     }
   });
 
-=======
-    }
-  });
-
-  User.create({ username: username, password: password });
->>>>>>> 4f9ff6c30d22102080e42565f2a2e51f335eca97
   res.redirect("/");
 };
 
