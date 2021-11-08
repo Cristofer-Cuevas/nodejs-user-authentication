@@ -5,6 +5,9 @@ import dontenv from "dotenv";
 import router from "./routes/routes.js";
 import dbConnection from "./dbConnection/dbConnection.js";
 import MongoStore from "connect-mongo";
+import passport from "passport";
+
+import "./config/passport.js";
 
 const app = express();
 dontenv.config();
@@ -27,6 +30,10 @@ app.use(
     },
   })
 );
+
+// Passport funcs
+app.use(passport.initialize());
+app.use(passport.session());
 
 dbConnection(() => {
   app.use(router);
