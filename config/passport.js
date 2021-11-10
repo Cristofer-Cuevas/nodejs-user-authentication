@@ -1,7 +1,7 @@
 import passport from "passport";
-// import LocalStrategy from `passport-local`.Strategy();
 import LocalStrategy from "passport-local";
 import User from "../models/User-model.js";
+import { validatePassword } from "../lib/passwordUtils.js";
 
 passport.use(
   new LocalStrategy((username, password, done) => {
@@ -13,7 +13,9 @@ passport.use(
         return done(null, false);
       }
 
-      const isValid = validPassword(password, user.hash, user.salt);
+      console.log(user + "hola");
+
+      const isValid = validatePassword(password, user.hash, user.salt);
 
       if (isValid) {
         return done(null, user);
