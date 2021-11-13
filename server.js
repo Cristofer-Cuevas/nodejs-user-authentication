@@ -25,7 +25,7 @@ app.use(
       mongoUrl: process.env.MONGO_URI,
       collectionName: "sessions",
     }),
-    Cookie: {
+    cookie: {
       maxAge: 1000 * 60 * 60 * 24,
     },
   })

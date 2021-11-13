@@ -10,9 +10,17 @@ const ensureAuthenticated = (req, res, next) => {
   }
 };
 
+const ensureAuthenticated2 = (req, res, next) => {
+  if (req.isAuthenticated()) {
+    res.redirect("/profile");
+  } else {
+    next();
+  }
+};
+
 const router = express.Router();
 
-router.get("/", controllers.get);
+router.get("/", ensureAuthenticated2, controllers.get);
 
 router.post("/register", controllers.registerPost);
 
